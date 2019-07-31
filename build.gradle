@@ -1,0 +1,34 @@
+buildscript {
+        ext {
+                springBootVersion = "2.0.8.RELEASE"
+                libertyVersion = "2.1.1-SNAPSHOT"
+                cfAppVersion = "2.2.0"
+        }
+
+        dependencies {
+                classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+                classpath "gradle.plugin.net.wasdev.wlp.gradle.plugins:ci.gradle-release-gradlePlugin:2.6.3"
+        }
+}
+
+plugins {
+    id 'java'
+    id "org.springframework.boot" version "2.0.8.RELEASE"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+        implementation project(':ibm-cos-api')
+        implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind'
+        implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
